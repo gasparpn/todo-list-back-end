@@ -1,32 +1,41 @@
 package com.bravi.TodoListBravi.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
+import com.bravi.TodoListBravi.constantes.Status;
+
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+
+import javax.persistence.*;
+import java.time.LocalDateTime;
 import javax.validation.constraints.NotBlank;
+
 
 @Entity
 public class TodoItem {
 
+    @Id
+    @GeneratedValue
     private Long id;
     @NotBlank
     private String title;
-    private boolean done;
+    @Enumerated(EnumType.STRING)
+    private Status status;
+    private LocalDateTime scheduledAt;
+    private LocalDateTime scheduledFor;
+
 
     public TodoItem() {
     }
 
-    public TodoItem(Long id, String title, boolean done) {
+    public TodoItem(Long id, String title, Status status, LocalDateTime scheduledAt, LocalDateTime scheduledFor) {
         this.id = id;
         this.title = title;
-        this.done = done;
+        this.status = status;
+        this.scheduledAt = scheduledAt;
+        this.scheduledFor = scheduledFor;
     }
 
-    @Id
-    @GeneratedValue
-    public Long getId() {
-        return id;
-    }
+    public Long getId() { return id; }
 
     public void setId(Long id) {
         this.id = id;
@@ -40,11 +49,23 @@ public class TodoItem {
         this.title = title;
     }
 
-    public boolean isDone() {
-        return done;
+    public Status getStatus() { return status; }
+
+    public void setStatus(Status status) { this.status = status; }
+
+    public LocalDateTime getScheduledAt() {
+        return scheduledAt;
     }
 
-    public void setDone(boolean done) {
-        this.done = done;
+    public void setScheduledAt(LocalDateTime scheduledAt) {
+        this.scheduledAt = scheduledAt;
+    }
+
+    public LocalDateTime getScheduledFor() {
+        return scheduledFor;
+    }
+
+    public void setScheduledFor(LocalDateTime scheduledFor) {
+        this.scheduledFor = scheduledFor;
     }
 }
