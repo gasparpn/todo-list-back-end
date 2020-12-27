@@ -1,9 +1,6 @@
 package com.bravi.TodoListBravi.model;
 
-import com.bravi.TodoListBravi.constantes.Status;
-
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
+import com.bravi.TodoListBravi.constants.Status;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -22,17 +19,21 @@ public class TodoItem {
     private Status status;
     private LocalDateTime scheduledAt;
     private LocalDateTime scheduledFor;
+    private LocalDateTime finishedAt;
 
 
     public TodoItem() {
     }
 
-    public TodoItem(Long id, String title, Status status, LocalDateTime scheduledAt, LocalDateTime scheduledFor) {
+    public TodoItem(Long id, String title,
+                    Status status,LocalDateTime scheduledAt,
+                    LocalDateTime scheduledFor, LocalDateTime finishedAt) {
         this.id = id;
         this.title = title;
         this.status = status;
         this.scheduledAt = scheduledAt;
         this.scheduledFor = scheduledFor;
+        this.finishedAt = finishedAt;
     }
 
     public Long getId() { return id; }
@@ -68,4 +69,8 @@ public class TodoItem {
     public void setScheduledFor(LocalDateTime scheduledFor) {
         this.scheduledFor = scheduledFor;
     }
+
+    public LocalDateTime getFinishedAt() { return finishedAt; }
+
+    public void setFinishedAt(LocalDateTime finishedAt) { this.finishedAt = finishedAt; }
 }

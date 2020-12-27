@@ -1,4 +1,4 @@
-package com.bravi.TodoListBravi.constantes;
+package com.bravi.TodoListBravi.constants;
 
 public enum Status {
     TODO, DOING, DONE
