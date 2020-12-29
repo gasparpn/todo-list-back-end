@@ -87,6 +87,7 @@ class TodoListBraviApplicationTests {
 		todoItem.setTitle("Title Task");
 		todoItem.setScheduledAt(LocalDateTime.of(2020, 12, 27, 10,10, 10));
 		todoItem.setScheduledFor(LocalDateTime.of(2020, 12, 28, 10,10, 10));
+		todoRepository.save(todoItem);
 		JSONObject newItem = new JSONObject();
 		newItem.put("id", todoItem.getId());
 		newItem.put("title", "TodoItem test");
