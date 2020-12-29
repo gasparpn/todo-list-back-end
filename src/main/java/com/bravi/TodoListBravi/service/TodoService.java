@@ -32,7 +32,7 @@ public class TodoService implements ITodoService{
     public void verifyScheduledDateTask(TodoItem todoItem) {
         if(todoItem.getScheduledFor().isBefore(todoItem.getScheduledAt())) {
             throw new ResponseStatusException(
-                    HttpStatus.BAD_REQUEST, "TEST"
+                    HttpStatus.BAD_REQUEST, "Can't set a scheduled date before the actual date"
             );
         }
     }
